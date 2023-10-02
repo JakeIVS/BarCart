@@ -6,6 +6,13 @@ const express = require("express");
 //express app
 const app = express();
 
+// create middleware
+app.use((req, res, next) => {
+  console.log(req.path, req.method); // logs out the request path and method
+  next();
+});
+
+// create default path and response
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to BarCart" });
 });

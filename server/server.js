@@ -2,6 +2,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const mongoose = require("mongoose");
 const recipeRoutes = require("./routes/recipes"); // import /recipes from routes folder
 
 //express app
@@ -18,9 +19,17 @@ app.use((req, res, next) => {
 // routes
 app.use("/api/recipes", recipeRoutes);
 
-// listen for requests
-app.listen(process.env.PORT, () => {
-  console.log("server listening on port 4000");
-});
+// connect to db
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    // listen for requests
+    app.listen(process.env.PORT, () => {
+      console.log("server listening on port 4000");
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 process.env;

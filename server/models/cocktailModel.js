@@ -7,13 +7,16 @@ const cocktailSchema = new Schema(
       type: String,
       required: true,
     },
-    spirit: {
+    baseSpirit: {
       type: String,
       required: true,
     },
-    recipe: {
-      type: String,
+    ingredients: {
+      type: [String],
       required: true,
+    },
+    description: {
+      type: String,
     },
   },
   { timestamps: true }

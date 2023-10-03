@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const recipeRoutes = require("./routes/recipes"); // import /recipes from routes folder
+const recipeRoutes = require("./routes/cocktails"); // import /recipes from routes folder
 
 //express app
 const app = express();

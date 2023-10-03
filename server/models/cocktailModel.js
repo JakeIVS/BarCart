@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-const recipeSchema = new Schema(
+const cocktailSchema = new Schema(
   {
     name: {
       type: String,
@@ -11,7 +11,7 @@ const recipeSchema = new Schema(
       type: String,
       required: true,
     },
-    description: {
+    recipe: {
       type: String,
       required: true,
     },
@@ -19,4 +19,4 @@ const recipeSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Recipe", recipeSchema);
+module.exports = mongoose.model("Cocktail", cocktailSchema);

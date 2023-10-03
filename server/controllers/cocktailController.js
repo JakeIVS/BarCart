@@ -1,4 +1,5 @@
 const Cocktail = require("../models/cocktailModel");
+const mongoose = require("mongoose");
 
 // get all cocktails
 const getCocktails = async (req, res) => {
@@ -10,6 +11,10 @@ const getCocktails = async (req, res) => {
 // get a single cocktail
 const getCocktail = async (req, res) => {
   const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "ID is not valid" });
+  }
 
   const cocktail = await Cocktail.findById(id);
   if (!cocktail) {
@@ -33,11 +38,48 @@ const createCocktail = async (req, res) => {
 };
 
 // delete a cocktail
+const deleteCocktail = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "ID is not valid" });
+  }
+
+  const cocktail = await Cocktail.findOneAndDelete({ _id: id });
+
+  if (!cocktail) {
+    return res.status(404).json({ error: "ID does not exist" });
+  }
+
+  res.status(200).json(cocktail);
+};
 
 // update a cocktail
+const updateCocktail = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "ID is not valid" });
+  }
+
+  const cocktail = await Cocktail.findOneAndUpdate(
+    { _id: id },
+    {
+      ...req.body,
+    }
+  );
+
+  if (!cocktail) {
+    return res.status(404).json({ error: "ID does not exist" });
+  }
+
+  res.status(200).json(cocktail);
+};
 
 module.exports = {
   getCocktails,
   getCocktail,
   createCocktail,
+  deleteCocktail,
+  updateCocktail,
 };

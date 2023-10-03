@@ -3,6 +3,8 @@ const {
   getCocktails,
   getCocktail,
   createCocktail,
+  deleteCocktail,
+  updateCocktail,
 } = require("../controllers/cocktailController");
 
 const router = express.Router();
@@ -17,13 +19,9 @@ router.get("/:id", getCocktail);
 router.post("/", createCocktail);
 
 // DELETE a cocktail
-router.delete("/:id", (req, res) => {
-  res.json({ message: "DELETE a new cocktail" });
-});
+router.delete("/:id", deleteCocktail);
 
 // UPDATE a cocktail
-router.patch("/:id", (req, res) => {
-  res.json({ message: "UPDATE a new cocktail" });
-});
+router.patch("/:id", updateCocktail);
 
 module.exports = router;

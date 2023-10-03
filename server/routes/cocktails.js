@@ -1,24 +1,20 @@
 const express = require("express");
-const Cocktail = require("../models/cocktailModel");
+const {
+  getCocktails,
+  getCocktail,
+  createCocktail,
+} = require("../controllers/cocktailController");
 
 const router = express.Router();
 
 // GET all cocktails
-router.get("/", (req, res) => {
-  res.json({ message: "GET all cocktails" });
-});
+router.get("/", getCocktails);
 
 // GET a single cocktail
-router.get("/:id", (req, res) => {
-  res.json({ messgae: "GET a single cocktail" });
-});
+router.get("/:id", getCocktail);
 
-// POST a new cocktail
-router.post("/", (req, res) => {
-  const { name, spirit, description } = req.body;
-
-  res.json({ message: "POST a new cocktail" });
-});
+// CREATE a new cocktail
+router.post("/", createCocktail);
 
 // DELETE a cocktail
 router.delete("/:id", (req, res) => {

@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const recipeRoutes = require("./routes/cocktails"); // import /recipes from routes folder
+const cocktailRoutes = require("./routes/cocktails"); // import /cocktails from routes folder
 
 //express app
 const app = express();
@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use("/api/recipes", recipeRoutes);
+app.use("/api/cocktails", cocktailRoutes);
 
 // connect to db
 mongoose

@@ -1,4 +1,5 @@
 const express = require("express");
+const Recipe = require("../models/recipeModel");
 
 const router = express.Router();
 
@@ -14,6 +15,8 @@ router.get("/:id", (req, res) => {
 
 // POST a new recipe
 router.post("/", (req, res) => {
+  const { name, spirit, description } = req.body;
+
   res.json({ message: "POST a new recipe" });
 });
 

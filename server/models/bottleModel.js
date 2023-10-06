@@ -14,6 +14,12 @@ const bottleSchema = new Schema({
     type: Number,
     required: true,
   },
+  price: {
+    type: Number,
+  },
+  reviews: {
+    type: [String],
+  },
 });
 
 module.exports = mongoose.model("Bottle", bottleSchema);

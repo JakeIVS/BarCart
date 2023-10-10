@@ -6,8 +6,8 @@ const bottleSchema = new Schema({
     type: String,
     required: true,
   },
-  category: {
-    type: String,
+  tags: {
+    type: [String],
     required: true,
   },
   size: {

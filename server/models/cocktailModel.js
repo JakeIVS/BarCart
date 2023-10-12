@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Pour = require("./pourModel");
 
 const Schema = mongoose.Schema;
 const cocktailSchema = new Schema(
@@ -12,7 +13,7 @@ const cocktailSchema = new Schema(
       required: true,
     },
     ingredients: {
-      type: [String],
+      type: [Pour],
       required: true,
     },
     description: {

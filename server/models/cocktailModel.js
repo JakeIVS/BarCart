@@ -8,16 +8,14 @@ const cocktailSchema = new Schema(
       type: String,
       required: true,
     },
-    baseSpirit: {
-      type: String,
-      required: true,
-    },
     ingredients: {
       type: [Pour],
       required: true,
     },
     description: {
       type: String,
+      required: true,
+      minLength: [15, "Description must be at least 15 characters"],
     },
   },
   { timestamps: true }

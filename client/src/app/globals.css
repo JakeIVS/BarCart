@@ -1,7 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata&family=Maven+Pro&family=Nova+Square&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&family=Maven+Pro&family=Nova+Square&display=swap");
 
 :root {
   --foreground-rgb: 0, 0, 0;

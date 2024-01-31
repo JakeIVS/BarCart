@@ -35,6 +35,7 @@ model Cocktail {
   instructions String
   category CocktialCategory @relation(fields: [categoryId], references: [id])
   categoryId String
+  ingredients Ingredient[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -43,10 +44,21 @@ model BottleCategory {
   id String @id @default(uuid())
   name String
   bottles Bottle[]
+  cocktails Ingredient[]
 }
 
 model CocktialCategory {
   id String @id @default(uuid())
   name String
   cocktails Cocktail[]
+}
+
+model Ingredient {
+  bottleType BottleCategory @relation(fields: [bottleCategoryId], references: [id])
+  bottleCategoryId String
+  amount Int
+  cocktail Cocktail @relation(fields: [cocktailId], references: [id])
+  cocktailId String
+  assignedAt DateTime @default(now())
+  @@id([bottleCategoryId, cocktailId])
 }

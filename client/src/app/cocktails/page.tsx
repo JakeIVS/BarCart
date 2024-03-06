@@ -1,3 +1,5 @@
+import CocktailTile from "@/components/CocktailTile";
+
 export default function Cocktails() {
   return (
     <div>
